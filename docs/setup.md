@@ -53,7 +53,12 @@ create plugins folder & add this folder pnpm-workspace.yaml
 mkdir plugins
 ```
 
-create a plugin with name code-generator
+generate a plugin [in folder plugins/code-generator]
 ```bash
-pnpx nx g plugin plugins/code-genarator
+pnpx nx g plugin plugins/code-generator
+```
+
+generate a generator [ in plugin plugins/code-generator]
+```bash
+pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib
 ```
