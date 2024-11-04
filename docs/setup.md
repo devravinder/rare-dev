@@ -136,6 +136,9 @@ Nx plugin can contain generators & task executors
    ``` pnpx nx g [plugin-path]/[generator-path] ```
    eg: 
    ``` pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib ```  
+   eg2: 
+   ``` pnpx nx g generator plugins/code-generator/src/generators/ts-lib ```  
+
    this command will generate some templates files under files folder  
 
 4. adding template files  
