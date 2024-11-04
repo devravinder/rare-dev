@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "graph": "pnpx nx graph",
+    "graph:affected": "pnpx nx graph --affected",
+    "build:affected": "nx affected --target=build --parallel",
+    "clean:modules": "find . -name 'node_modules' -type d -exec rm -rf {} \\;",
+    "g:p": "pnpx nx g plugin",
+    "g:g":"pnpx nx g generator",
+    "g:rts":"pnpx nx g code-generator:react-ts-lib"
   },
   "keywords": [],
   "author": "",
