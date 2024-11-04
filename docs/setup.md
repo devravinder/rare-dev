@@ -132,7 +132,26 @@ Nx plugin can contain generators & task executors
    this will generate a plug-project under plugins folder
 
 
-3. generate a generator 
-   ``` pnpx nx g [path] ```
+3. generate a generator in a specific plugin
+   ``` pnpx nx g [plugin-path]/[generator-path] ```
    eg: 
-   ``` pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib ```
+   ``` pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib ```  
+   this command will generate some templates files under files folder  
+
+4. adding template files  
+   we can add any no of template files with .template extension under 'files' folder in generators/src 
+
+5. User input ( dynamic values )
+   in schema.json add the required dynamic values, that's need to take user input  
+   we can access schema values ( user input values ) in template like <%= name %>
+
+6. checking the generator execution 
+   ``` pnpx nx g [plugin-name]:[genrator-name] --dry-run ```  
+   eg:  
+   ``` pnpx nx g code-generator:react-ts-lib --dry-run ```
+
+7. using a plugin generator
+   ``` pnpx nx g [plugin-name]:[genrator-name] ```
+   eg: 
+   ``` pnpx nx g code-generator:react-ts-lib ```
+   
