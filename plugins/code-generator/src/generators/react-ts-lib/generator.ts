@@ -12,14 +12,19 @@ export async function reactTsLibGenerator(
   options: ReactTsLibGeneratorSchema
 ) {
 
+  const keywords = [
+    `@${options.scope}/${options.name}`,
+      options.scope,
+      options.name
+  ]
+
+  if(options.keywords) {
+    keywords.push(...options.keywords.split(',').map(e=>e.trim()))
+  }
+
   const modifiedOptions = {
     ...options,
-    keywords:  [
-      `@${options.scope}/${options.name}`,
-      options.scope,
-      options.name,
-      ...options.keywords?.split(',').map(e=>e.trim())
-    ]
+    keywords
   }
 
   const projectRoot = `${options.parentDir}/${options.name}`;

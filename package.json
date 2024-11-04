@@ -10,7 +10,7 @@
     "clean:modules": "find . -name 'node_modules' -type d -exec rm -rf {} \\;",
     "g:p": "pnpx nx g plugin",
     "g:g":"pnpx nx g generator",
-    "g:rts":"pnpx nx g code-generator:react-ts-lib"
+    "g:rtl":"pnpx nx g code-generator:react-ts-lib"
   },
   "keywords": [],
   "author": "",
@@ -37,7 +37,7 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",
-    "typescript": "~5.5.2",
+    "typescript": "~5.6.2",
     "typescript-eslint": "^8.0.0"
   },
   "dependencies": {
