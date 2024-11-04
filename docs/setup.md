@@ -40,3 +40,20 @@ EOF
 ```bash
 pnpx nx@latest init
 ```
+
+
+## 5. Add nx plugin
+```bash
+pnpx nx add @nx/plugin
+```
+
+## 6. Creating custom plugin
+create plugins folder & add this folder pnpm-workspace.yaml
+```bash
+mkdir plugins
+```
+
+create a plugin with name code-generator
+```bash
+pnpx nx g plugin plugins/code-genarator
+```
