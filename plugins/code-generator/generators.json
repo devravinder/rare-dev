@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "react-ts-lib": {
+      "factory": "./src/generators/react-ts-lib/generator",
+      "schema": "./src/generators/react-ts-lib/schema.json",
+      "description": "react-ts-lib generator"
+    }
+  }
+}

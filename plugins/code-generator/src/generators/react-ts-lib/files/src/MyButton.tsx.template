@@ -1,0 +1,10 @@
+import { ButtonHTMLAttributes } from "react"
+
+export type MyButtonProps =  ButtonHTMLAttributes<HTMLButtonElement>
+ 
+ export  function MyButton(props: MyButtonProps) {
+   return (
+     <button {...props} />
+   )
+ }
+ 

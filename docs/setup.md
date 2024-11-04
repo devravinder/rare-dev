@@ -35,7 +35,6 @@ packages:
 EOF
 ```
 
-
 ## 4. Initilaize nx
 ```bash
 pnpx nx@latest init
@@ -58,7 +57,9 @@ generate a plugin [in folder plugins/code-generator]
 pnpx nx g plugin plugins/code-generator
 ```
 
-generate a generator [ in plugin plugins/code-generator]
+## 7. generate a generator 
+[ in plugin 'plugins/code-generator' under its generators folder 'src/generators']
+
 ```bash
 pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib
 ```

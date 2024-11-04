@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "ReactTsLib",
+  "title": "ReactTs Lib Generator",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "package name"
+    },
+    "scope": {
+      "type": "string",
+      "description": "package scope",
+      "x-prompt": "give package scope",
+      "default": "rare-dev"
+    },
+    "description": {
+      "type": "string",
+      "description": "package description",
+      "x-prompt": "give package description",
+      "default": ""
+    },
+    "private": {
+      "type": "string",
+      "description": "package visibility",
+      "default": "false",
+      "x-prompt": {
+        "message": "is it private package?",
+        "type": "list",
+        "items": [
+          { "value": "true", "label": "true" },
+          { "value": "false", "label": "false" }
+        ]
+      }
+    },
+    "author":{
+      "type": "string",
+      "description": "package author",
+      "x-prompt": "author name",
+      "default": "Ravinder Reddy Kothabad"
+    },
+    "keywords": {
+      "type": "string",
+      "description": "Package keywords",
+      "x-prompt": "package keywords? (comma-separated)"
+    },
+    "parentDir": {
+      "type": "string",
+      "description": "package parent directory",
+      "x-prompt": "which is parent directory for this package",
+      "default": "./libs"
+    }
+  },
+  "required": ["name"]
+}
