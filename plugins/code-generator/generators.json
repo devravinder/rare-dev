@@ -4,6 +4,16 @@
       "factory": "./src/generators/react-ts-lib/generator",
       "schema": "./src/generators/react-ts-lib/schema.json",
       "description": "react-ts-lib generator"
+    },
+    "template-from-project": {
+      "factory": "./src/generators/template-from-project/generator",
+      "schema": "./src/generators/template-from-project/schema.json",
+      "description": "template-from-project generator"
+    },
+    "ts-lib": {
+      "factory": "./src/generators/ts-lib/generator",
+      "schema": "./src/generators/ts-lib/schema.json",
+      "description": "ts-lib generator"
     }
   }
 }

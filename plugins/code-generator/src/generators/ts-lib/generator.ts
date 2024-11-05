@@ -5,11 +5,11 @@ import {
   Tree,
 } from '@nx/devkit';
 import * as path from 'path';
-import { ReactTsLibGeneratorSchema } from './schema';
+import { TsLibGeneratorSchema } from './schema';
 
-export async function reactTsLibGenerator(
+export async function tsLibGenerator(
   tree: Tree,
-  options: ReactTsLibGeneratorSchema
+  options: TsLibGeneratorSchema
 ) {
 
   const keywords = [
@@ -21,8 +21,8 @@ export async function reactTsLibGenerator(
   if(options.keywords) {
     keywords.push(...options.keywords.split(',').map(e=>e.trim()))
   }
-  const formats = options.formats ==='both' ? ['es', 'cjs'] : [options.formats]
 
+  const formats = options.formats ==='both' ? ['es', 'cjs'] : [options.formats]
 
   const modifiedOptions = {
     ...options,
@@ -36,11 +36,11 @@ export async function reactTsLibGenerator(
   addProjectConfiguration(tree, options.name, {
     root: projectRoot,
     projectType: 'library',
-    sourceRoot: `${projectRoot}/`,
+    sourceRoot: `${projectRoot}/src`,
     targets: {},
   });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, modifiedOptions);
   await formatFiles(tree);
 }
 
-export default reactTsLibGenerator;
+export default tsLibGenerator;

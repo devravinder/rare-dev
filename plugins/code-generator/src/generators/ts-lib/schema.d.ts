@@ -1,4 +1,4 @@
-export interface ReactTsLibGeneratorSchema {
+export interface TsLibGeneratorSchema {
   name: string;
   scope: string;
   description: string;

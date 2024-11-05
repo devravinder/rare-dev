@@ -1,19 +1,14 @@
 {
   "$schema": "https://json-schema.org/schema",
-  "$id": "ReactTsLib",
-  "title": "ReactTs Lib Generator",
+  "$id": "TsLib",
+  "title": "",
   "type": "object",
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      },
-      "x-prompt": "package name"
-    },
-    "scope": {
+      "description": "Package name",
+      "x-prompt": "Package name"
+    },"scope": {
       "type": "string",
       "description": "package scope",
       "x-prompt": "give package scope",

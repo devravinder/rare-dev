@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "TemplateFromProject",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "sourceDirectory": {
+      "message": "path wrt",
+      "type": "string",
+      "x-prompt": "source directory path (full path)"
+    },
+    "targetDirectory": {
+      "type": "string",
+      "x-prompt": "target directory path (full path)"
+    },
+    "skipDirectories": {
+      "type": "string",
+      "x-prompt": "directories to skip along with node_modules, dist, build (comma-separated)",
+      "default":""
+    },
+    "skipFiles": {
+      "type": "string",
+      "x-prompt": "files to skip (comma-separated)",
+      "default":""
+    }
+  },
+  "required": ["targetDirectory","sourceDirectory"]
+}
+

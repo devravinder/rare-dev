@@ -73,7 +73,7 @@ pnpx nx@latest init
 2. adding depedency from work-space in specific-app  
    ``` pnpm nx [project]:add [package-name] -w```  
    eg:  
-   ```pnpm nx learn-react-19:add @rare/exif-remover -w```
+   ```pnpm nx learn-react-19:add @rare-dev/exif-remover -w```
 
 3. to install package in workspace level  
    ``` pnpx nx add [package-name] ```  
@@ -158,3 +158,10 @@ Nx plugin can contain generators & task executors
    eg: 
    ``` pnpx nx g code-generator:react-ts-lib ```
    
+
+
+# Note:-
+
+1. always use pnpm to add packages, bcz it reads package-name from package.json while adding workspace packages,  
+   but nx won't read like that, it treats every folder as project
+
