@@ -36,7 +36,7 @@
     "formats": {
       "type": "string",
       "description": "package formats",
-      "default": "cjs",
+      "default": "both",
       "x-prompt": {
         "message": "package formats",
         "type": "list",
