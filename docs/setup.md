@@ -163,5 +163,8 @@ Nx plugin can contain generators & task executors
 # Note:-
 
 1. always use pnpm to add packages, bcz it reads package-name from package.json while adding workspace packages,  
-   but nx won't read like that, it treats every folder as project
+   but nx won't read like that, it treats every folder as project  
+   
+   eg: adding @rare-dev/error-boundary package in learn-react-18 app (from workspace)
+   ``` pnpm add @rare-dev/error-boundary --filter learn-react-18 --workspace ```
 
