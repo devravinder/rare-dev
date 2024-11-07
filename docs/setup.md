@@ -46,7 +46,7 @@ pnpx nx@latest init
 1. to run commands from root folder in specific-app  
    ``` pnpm run [command] --filter [app-name]```  
    *app-name* is from package.json of the specific app  
-   eg: 
+   eg:  
    ``` pnpm run build --filter learn-react-19 ```
 
 2. adding depedency from work-space in specific-app  
@@ -67,7 +67,7 @@ pnpx nx@latest init
 1. to run commands from root folder in specific-app  
    ``` pnpx nx command app-name ```  
    *app-name* is from package.json of the specific app  
-   eg: 
+   eg:  
    ``` pnpx nx build learn-react-19 ```
 
 2. adding depedency from work-space in specific-app  
@@ -90,7 +90,7 @@ pnpx nx@latest init
       eg:  
       ``` pnpx nx run-many --target=build --project=learn-react-19, project2 ```
 
-5. running command only on affected projects  
+5. running command only on affected projects   
    ``` pnpx nx affected --target=[command] ```  
    eg:  
    ```pnpx nx affected --target=build ```
@@ -121,10 +121,10 @@ the '^' symbol means child projects/depencies
 Nx plugin is tool that is added Nx work-space  
 Nx plugin can contain generators & task executors  
 
-1. to add plugin depedency
+1. to add plugin depedency  
 ``` pnpx nx add @nx/plugin ```
 
-2. generate a plugin 
+2. generate a plugin  
    ``` pnpx nx g plugin [path] ```  
    eg:  
    ``` pnpx nx g plugin plugins/code-generator ```  
@@ -132,11 +132,11 @@ Nx plugin can contain generators & task executors
    this will generate a plug-project under plugins folder
 
 
-3. generate a generator in a specific plugin
-   ``` pnpx nx g [plugin-path]/[generator-path] ```
-   eg: 
-   ``` pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib ```  
-   eg2: 
+3. generate a generator in a specific plugin  
+   ``` pnpx nx g [plugin-path]/[generator-path] ```  
+   eg:  
+   ``` pnpx nx g generator plugins/code-generator/src/generators/react-ts-lib ```   
+   eg2:  
    ``` pnpx nx g generator plugins/code-generator/src/generators/ts-lib ```  
 
    this command will generate some templates files under files folder  
@@ -144,18 +144,18 @@ Nx plugin can contain generators & task executors
 4. adding template files  
    we can add any no of template files with .template extension under 'files' folder in generators/src 
 
-5. User input ( dynamic values )
+5. User input ( dynamic values )  
    in schema.json add the required dynamic values, that's need to take user input  
    we can access schema values ( user input values ) in template like <%= name %>
 
-6. checking the generator execution 
+6. checking the generator execution  
    ``` pnpx nx g [plugin-name]:[genrator-name] --dry-run ```  
    eg:  
    ``` pnpx nx g code-generator:react-ts-lib --dry-run ```
 
-7. using a plugin generator
-   ``` pnpx nx g [plugin-name]:[genrator-name] ```
-   eg: 
+7. using a plugin generator  
+   ``` pnpx nx g [plugin-name]:[genrator-name] ```  
+   eg:  
    ``` pnpx nx g code-generator:react-ts-lib ```
    
 
@@ -165,6 +165,6 @@ Nx plugin can contain generators & task executors
 1. always use pnpm to add packages, bcz it reads package-name from package.json while adding workspace packages,  
    but nx won't read like that, it treats every folder as project  
    
-   eg: adding @rare-dev/error-boundary package in learn-react-18 app (from workspace)
+   eg: adding @rare-dev/error-boundary package in learn-react-18 app (from workspace)  
    ``` pnpm add @rare-dev/error-boundary --filter learn-react-18 --workspace ```
 
