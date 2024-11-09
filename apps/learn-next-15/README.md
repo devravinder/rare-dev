@@ -23,4 +23,15 @@ Reference links:-
     3. error.tsx
     4. global-error.tsx
     5. routes.tsx
-12. Production Build & Deployment
+    6. template.tsx
+    7. default.tsx & parallel routes
+12. Routes  ( routes groups ) 
+    1. Normal routes ( app & page )
+    2. parallel routes ( slots )
+    3. intercepting routes
+13. generateStaticParams ( Static Generation )
+14. SEO
+    1. generateMetadata
+    2. generateStaticParams
+    3. Image
+14. Production Build & Deployment
