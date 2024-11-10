@@ -15,7 +15,7 @@ Reference links:-
 6. Server Actions ( POST, PUT, DELETE )
 7. Suspense & Streaming
 8. Caching
-9. Static & Dymanic rendering
+9. Static & Dymanic rendering & Partial Rendering
 10. Middlewares
 11. Folder Structure & Special files
     1. page.tsx
