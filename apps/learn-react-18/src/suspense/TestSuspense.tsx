@@ -1,5 +1,5 @@
-import Example0 from "./Example0/Example0";
-import Example01 from "./Example0/Example01";
+import Example0 from "./example0/Example0";
+import Example01 from "./example0/Example01";
 import Example1 from "./example1/Example1";
 import Example2 from "./example2/Example2";
 import Example21 from "./example2/Example21";

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { withSuspense, wait } from "../api";
+import { withSuspense } from "../lib/useSuspense";
+import { wait } from "../../util";
 
 // Create the resource outside the component to avoid recreation on re-renders
 const suspensableFunction = withSuspense(dummyFetch());

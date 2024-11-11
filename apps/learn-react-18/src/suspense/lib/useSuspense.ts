@@ -1,7 +1,5 @@
+import { useState } from 'react';
 
-export const wait = async (time: number = 2000) => {
-  await new Promise(resolve => setTimeout(resolve, time));
-}
 
 // Create a wrapper that supports suspense
 export const withSuspense = <T>(promise: Promise<T>) => {
@@ -29,4 +27,7 @@ export const withSuspense = <T>(promise: Promise<T>) => {
       }
     }
 }
-
+export function useSuspense<T>(fetchFn: () => Promise<T>) {
+  const [resource] = useState(() => withSuspense(fetchFn()));
+  return resource;
+}

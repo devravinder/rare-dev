@@ -1,5 +1,6 @@
 import { Suspense, useState } from 'react'
-import { wait, withSuspense } from '../api';
+import { withSuspense } from '../lib/useSuspense';
+import { wait } from '../../util';
 
 export default function Example2() {
 
