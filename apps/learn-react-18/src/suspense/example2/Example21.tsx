@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import { useSuspense } from '../useSuspense';
-import { wait } from '../api';
+import { useSuspense } from '../lib/useSuspense';
+import { wait } from '../../util';
 
 export default function Example21() {
 
