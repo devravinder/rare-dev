@@ -2,14 +2,14 @@ import { Maximize2 } from 'lucide-react';
 import { useCallback } from 'react';
 
 interface ResizeHandleProps {
-  imageRef: React.RefObject<HTMLImageElement>;
+  elementRef: React.RefObject<HTMLElement>;
   onResize: (width: number, height: number) => void;
   onResizeStart: () => void;
   onResizeEnd: () => void;
 }
 
 export const ResizeHandle = ({
-  imageRef,
+  elementRef,
   onResize,
   onResizeStart,
   onResizeEnd,
@@ -20,8 +20,8 @@ export const ResizeHandle = ({
       onResizeStart();
 
       const startX = event.clientX;
-      const startWidth = imageRef.current?.offsetWidth || 0;
-      const startHeight = imageRef.current?.offsetHeight || 0;
+      const startWidth = elementRef.current?.offsetWidth || 0;
+      const startHeight = elementRef.current?.offsetHeight || 0;
       const aspectRatio = startWidth / startHeight;
 
       const handleMouseMove = (e: MouseEvent) => {
@@ -43,12 +43,12 @@ export const ResizeHandle = ({
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
     },
-    [imageRef, onResize, onResizeStart, onResizeEnd]
+    [elementRef, onResize, onResizeStart, onResizeEnd]
   );
 
   return (
     <Maximize2
-      className="invisible group-hover:visible absolute cursor-se-resize rotate-90 rounded-md bottom-0 right-0 p-1 w-6 h-6 bg-gray-50 border border-gray-300  hover:border-blue-500"
+      className="invisible group-hover:visible absolute rounded-md bottom-0 right-0 cursor-se-resize rotate-90  p-1 w-6 h-6 bg-gray-50 border border-gray-300  hover:border-blue-500"
       onMouseDown={handleMouseDown}/>
   );
 };

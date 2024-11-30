@@ -1,8 +1,8 @@
 import Image from '@tiptap/extension-image'
-import { resizeAttribues, ResizableComponent } from './resize/ResizableComponent';
-import { ReactNodeViewRenderer } from '@tiptap/react';
+import { resizeAttribues, SizeAndPosition } from './size-position/SizeAndPosition';
+import { mergeAttributes, ReactNodeViewRenderer } from '@tiptap/react';
 
-export const ImageExtension = Image.extend({
+const ImageExtension = Image.extend({
     addAttributes() {
         return {
             ...resizeAttribues('img'),
@@ -10,9 +10,16 @@ export const ImageExtension = Image.extend({
         }
     },
     addNodeView() {
-        return ReactNodeViewRenderer(ResizableComponent);
+        return ReactNodeViewRenderer(SizeAndPosition);
     },
 
+    renderHTML({ HTMLAttributes }) {
+        return [
+            'div',
+            { class: `flex items-center ${HTMLAttributes.align}` },
+            ['img', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)]
+        ]
+    },
 })
 
 export default ImageExtension;

@@ -1,5 +1,5 @@
 import { Node, mergeAttributes } from '@tiptap/core';
-import { DATA_TAG_NAME, ResizableComponent, resizeAttribues } from './resize/ResizableComponent';
+import { DATA_TAG, SizeAndPosition, resizeAttribues } from './size-position/SizeAndPosition';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 
 export type MediaType = 'audio' | 'video';
@@ -46,8 +46,6 @@ const MediaExtension = Node.create<MediaExtensionOptions>({
     };
   },
 
-  // to parse raw HTML into the editor's internal representation (called the ProseMirror document structure)
-  // It is an array of objects defining how the editor recognizes specific HTML tags and their attributes
   parseHTML() {
     return [
       {
@@ -64,27 +62,29 @@ const MediaExtension = Node.create<MediaExtensionOptions>({
   // rendered back into HTML
   renderHTML({ HTMLAttributes }) {
 
-    const { type,controls, ...rest } = HTMLAttributes;
+    const { type,controls,autoPlay, ...rest } = HTMLAttributes;
     const element = type as MediaType;
-
-    return [element, mergeAttributes(rest, {
-      style: 'max-width: 100%',
-    })];
+  
+    return [
+      'div',
+      { class: `flex items-center ${HTMLAttributes.align}` },
+      [element, mergeAttributes(rest, {...controls&&({controls: true}),...autoPlay&&({autoPlay: true})})]
+    ];
   },
 
   addCommands() {
     return {
       setMedia: (options) => ({ commands }) => {
+        // inserts node (of given type) to editorDOM with (the given) attributes 
         return commands.insertContent({
           type: this.name,
-          // pass dynamiccaly DATA_TAG_NAME attribute... this is used in ResizableComponent
-          attrs: ({[DATA_TAG_NAME]:options.type, ...options}),
+          attrs: ({[DATA_TAG]:options.type, ...options}),
         });
       },
     };
   },
   addNodeView() {
-    return ReactNodeViewRenderer(ResizableComponent);
+    return ReactNodeViewRenderer(SizeAndPosition);
 },
 
 });
