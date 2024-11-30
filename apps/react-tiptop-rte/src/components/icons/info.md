@@ -1,0 +1,1 @@
+These icons are taken from https://reactsvgicons.com/search?q=table
