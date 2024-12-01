@@ -1,5 +1,5 @@
 "use client"
-import { createTodo } from "@/actions/todoActions";
+import { createTodoAction } from "@/actions/todoActions";
 import { useActionState } from "react";
 import SubmitButton from "./SubmitButton";
 
@@ -18,7 +18,7 @@ const initialState: CreateTodo = {
 */
 const TodoForm = () => {
 
-  const [, formAction] = useActionState(createTodo, initialState)
+  const [, formAction] = useActionState(createTodoAction, initialState)
 
 
   return <>

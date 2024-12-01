@@ -1,6 +1,6 @@
 "use client"
 
-import { toggleStatus } from '@/actions/todoActions'
+import { toggleStatusAction } from '@/actions/todoActions'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 
@@ -21,9 +21,9 @@ const TodoItem = ({ title, status, id }: Todo) => {
 
   }
 
-  const toggleStatusAction = async () => {
+  const toggleStatus = async () => {
     startTransition(async () => {
-      const { error, message } = await toggleStatus(id);
+      const { error, message } = await toggleStatusAction(id);
       if (error){
         setError(message)
         clearError()
@@ -43,7 +43,7 @@ const TodoItem = ({ title, status, id }: Todo) => {
       <div className={status === 'completed' ? "line-through decoration-green-500" : ""}>{title}</div>
       <div className="flex flex-row gap-4">
         <button disabled={isPending} onClick={deleteTodo} className="bg-red-500 disabled:bg-red-400 px-2 py-1 rounded-md">{isPending ? "Wait.." : "Delete"}</button>
-        <button disabled={isPending} onClick={() => toggleStatusAction()} className="bg-green-500 disabled:bg-green-400 px-2 py-1 rounded-md min-w-20">{isPending ? "Wait.." : `${status === 'completed' ? 'Undone' : 'Done'}`}</button>
+        <button disabled={isPending} onClick={() => toggleStatus()} className="bg-green-500 disabled:bg-green-400 px-2 py-1 rounded-md min-w-20">{isPending ? "Wait.." : `${status === 'completed' ? 'Undone' : 'Done'}`}</button>
       </div>
     </div>
     <div className="text-red-500">{error}</div>

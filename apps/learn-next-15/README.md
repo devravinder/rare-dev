@@ -12,12 +12,13 @@ Reference links:-
 4. Image
 5. Clinet v Server Components
    1. Data fetching ( GET requets )
-6. Server Actions ( POST, PUT, DELETE )
-7. Suspense & Streaming
-8. Caching
-9. Static & Dymanic rendering & Partial Rendering
-10. Middlewares
-11. Folder Structure & Special files
+6. Server Actions
+7. Route Handlers  (REST API: POST, PUT, DELETE )
+8. Suspense & Streaming
+9. Caching
+10. Static & Dymanic rendering & Partial Rendering
+11. Middlewares
+12. Folder Structure & Special files
     1. page.tsx
     2. layout.tsx
     3. error.tsx
@@ -25,13 +26,13 @@ Reference links:-
     5. routes.tsx
     6. template.tsx
     7. default.tsx & parallel routes
-12. Routes  ( routes groups ) 
+13. Routes  ( routes groups ) 
     1. Normal routes ( app & page )
     2. parallel routes ( slots )
     3. intercepting routes
-13. generateStaticParams ( Static Generation )
-14. SEO
+14. generateStaticParams ( SSG: Static Site Generation  & ISR: Incremental Static Site Generation)
+15. SEO
     1. generateMetadata
     2. generateStaticParams
     3. Image
-14. Production Build & Deployment
+16. Production Build & Deployment

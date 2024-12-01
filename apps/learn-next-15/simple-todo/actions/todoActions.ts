@@ -6,12 +6,14 @@ import { revalidatePath } from "next/cache";
 
 /* 
 Note:- Actions should always return proper values (shouldn't throw errors)
+
+If we are throing errors...then handle them unsing error.tsx or error-boundarires
 */
 
 
 // if we are using action along with forms
 // 'prevState' is the 'initialState' of 'useActionState'
-export async function createTodo(prevState: CreateTodo, formData: FormData) {
+export async function createTodoAction(prevState: CreateTodo, formData: FormData) {
 
    const todo:CreateTodo = {
     title: formData.get('title') as string
@@ -25,7 +27,7 @@ export async function createTodo(prevState: CreateTodo, formData: FormData) {
   }
 
 
-  export const toggleStatus=async(id: number)=>{
+  export const toggleStatusAction=async(id: number)=>{
 
    const old = await getTodoById(id)
 
@@ -40,6 +42,6 @@ export async function createTodo(prevState: CreateTodo, formData: FormData) {
 
   }
 
-  export const fetchTodos=async()=>{
+  export const fetchTodosAction=async()=>{
     return getTodos();
   }
