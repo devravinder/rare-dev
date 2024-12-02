@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 /* 
 Note:- Actions should always return proper values (shouldn't throw errors)
 
-If we are throing errors...then handle them unsing error.tsx or error-boundarires
+If we are throwing errors...then handle them unsing error.tsx or error-boundarires
 */
 
 

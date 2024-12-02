@@ -30,3 +30,17 @@ model Blog {
   authorId  String?
   coverPhoto String?
 }
+
+model Message {
+  id String @id
+  name String
+  email String
+  message String
+}
+
+model Subscriber {
+  id String @id
+  email String @unique
+  emailVerified Boolean @default(false)
+  unSubScribed Boolean @default(false)
+}

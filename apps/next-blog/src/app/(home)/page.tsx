@@ -1,4 +1,5 @@
 import BlogList from "@/components/BlogList";
+import Devider from "@/components/Devider";
 import { Metadata } from "next";
 
 
@@ -28,8 +29,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home() {
   return <>
-    <div className="flex flex-col gap-8">
-      <BlogList/>
+    <div className="flex flex-col gap-16">
+      <BlogList />
+      <Devider />
     </div>
   </>
 }

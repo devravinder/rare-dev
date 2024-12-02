@@ -1,6 +1,5 @@
-import { uid } from "@/utils/common";
-import { db } from "./client"
-import { Blog } from '@prisma/client'
+import { uid } from "@/lib/util";
+import { db, Blog } from "."
 
 export const getBlogs = async () => {
     return db.blog.findMany();
@@ -15,9 +14,7 @@ export const getBlogById = async (id: string) => {
 }
 
 export const createBlog = async (data: Blog) => {
-
     data.id = uid()
-
     return db.blog.create({
         data
     })

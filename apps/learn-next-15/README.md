@@ -30,7 +30,10 @@ Reference links:-
     1. Normal routes ( app & page )
     2. parallel routes ( slots )
     3. intercepting routes
-14. generateStaticParams ( SSG: Static Site Generation  & ISR: Incremental Static Site Generation)
+14. Special functions
+    1. connection
+    2. generateStaticParams ( SSG: Static Site Generation  & ISR: Incremental Static Site Generation)
+    3. etc
 15. SEO
     1. generateMetadata
     2. generateStaticParams

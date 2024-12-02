@@ -16,6 +16,13 @@ const initialState: CreateTodo = {
 
   better to use 'server-actions with useTransition' along with recct-hook-form
 */
+
+/* 
+ Generally... we'll store component state in 'initialState', so then it'll return the same
+  eg:  initialState:ApiResult = {message, type} , this can be used to show messages
+
+  ref: SignupForm example from NextJs https://nextjs.org/docs/app/building-your-application/authentication
+*/
 const TodoForm = () => {
 
   const [, formAction] = useActionState(createTodoAction, initialState)
