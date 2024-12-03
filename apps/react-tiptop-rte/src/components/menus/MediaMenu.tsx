@@ -1,82 +1,94 @@
 import { useState } from 'react';
-import { Image, Video, Music, Link as LinkIcon } from 'lucide-react';
+import { Image, Video, Music, Link as LinkIcon, Youtube } from 'lucide-react';
 import { MediaUploader } from '../media/MediaUploader';
 import { Editor } from '@tiptap/react';
 import tw from 'tailwind-styled-components';
+import { parseToMedia } from '../extensions/MediaExtension';
+
+export type MediaType = 'audio' | 'video' | 'iframe' | 'image';
 
 interface MediaMenuProps {
   editor: Editor;
 }
 
 export const MediaMenu = ({ editor }: MediaMenuProps) => {
-  const [mediaUrl, setMediaUrl] = useState('');
-  const [mediaType, setMediaType] = useState<'image' | 'video' | 'audio' | null>(null);
+  const [mediaSrc, setMediaSrc] = useState('');
+  const [type, setMediaType] = useState<MediaType | null>(null);
 
   const handleFileUpload = (file: File) => {
     const url = URL.createObjectURL(file);
     insertMedia(url);
   };
 
-  const insertMedia = (url: string) => {
-    if (!url || !mediaType) return;
+  const insertMedia = (src: string) => {
+    if (!src || !type) return;
 
-    switch (mediaType) {
+    switch (type) {
       case 'image':
-        editor.chain().focus().setImage({ src: url }).run();
+        editor.chain().focus().setImage({ src }).run();
         break;
-      case 'video':
-        editor.chain().focus().setMedia({ src: url, type: 'video' }).run();
+      case 'iframe': {
+        const { attributes } = parseToMedia(src)
+        editor.chain().focus().setMedia({ type, ...attributes }).run();
+      }
         break;
-      case 'audio':
-        editor.chain().focus().setMedia({ src: url, type: 'audio' }).run();
+      default: {
+        editor.chain().focus().setMedia({ src, type }).run();
+      }
         break;
     }
-
-    setMediaUrl('');
+    setMediaSrc('');
   };
 
   const handleUrlSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (mediaUrl) {
-      insertMedia(mediaUrl);
+    if (mediaSrc) {
+      insertMedia(mediaSrc);
     }
   };
 
   return (
-    <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border p-4 z-50 w-[400px]">
-      <div className="grid grid-cols-3 gap-2 mb-6">
+    <div className=" flex flex-col gap-2 absolute top-full right-0 mt-1 bg-white rounded-lg shadow-lg border p-4 z-50 w-auto">
+      <div className="w-full grid grid-cols-4 gap-2">
         <Button
           onClick={() => setMediaType('image')}
-          $active={mediaType === 'image'}
+          $active={type === 'image'}
         >
           <Image size={24} className="mb-2" />
           <span className="text-sm">Image</span>
         </Button>
         <Button
           onClick={() => setMediaType('video')}
-          $active={mediaType === 'video'}
+          $active={type === 'video'}
         >
           <Video size={24} className="mb-2" />
           <span className="text-sm">Video</span>
         </Button>
         <Button
+          onClick={() => setMediaType('iframe')}
+          $active={type === 'iframe'}
+        >
+          <Youtube size={24} className="mb-2" />
+          <span className="text-sm">Iframe</span>
+        </Button>
+        <Button
           onClick={() => setMediaType('audio')}
-          $active={mediaType === 'audio'}
+          $active={type === 'audio'}
         >
           <Music size={24} className="mb-2" />
           <span className="text-sm">Audio</span>
         </Button>
       </div>
 
-      {mediaType && (
+      {type && (
         <div className="space-y-6">
           <div className="space-y-3">
             <label className="block text-sm font-medium text-gray-700">From URL</label>
             <form onSubmit={handleUrlSubmit} className="flex gap-2">
               <input
                 type="text"
-                value={mediaUrl}
-                onChange={(e) => setMediaUrl(e.target.value)}
+                value={mediaSrc}
+                onChange={(e) => setMediaSrc(e.target.value)}
                 placeholder="Enter URL"
                 className="flex-1 px-3 py-2 border outline-none rounded text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
               />
@@ -89,13 +101,13 @@ export const MediaMenu = ({ editor }: MediaMenuProps) => {
             </form>
           </div>
 
-          <div className="space-y-3">
+          {type !== 'iframe' && <div className="space-y-3">
             <label className="block text-sm font-medium text-gray-700">From Computer</label>
             <MediaUploader
-              mediaType={mediaType}
+              mediaType={type}
               onFileSelect={handleFileUpload}
             />
-          </div>
+          </div>}
         </div>
       )}
     </div>

@@ -1,16 +1,21 @@
 import { Upload } from 'lucide-react';
 import openFile from './openFile';
+import { MediaType } from '../menus/MediaMenu';
 
-interface MediaUploaderProps {
-  mediaType: 'image' | 'video' | 'audio';
-  onFileSelect: (file: File) => void;
-}
+type AllowedMedia = Exclude<MediaType, 'iframe'> 
 
-const acceptMap = {
+const acceptMap:Record<AllowedMedia, string> = {
   image: 'image/*',
   video: 'video/*',
   audio: 'audio/*',
 };
+
+interface MediaUploaderProps {
+  mediaType: AllowedMedia;
+  onFileSelect: (file: File) => void;
+}
+
+
 export const MediaUploader = ({ mediaType, onFileSelect }: MediaUploaderProps) => {
 
   const onClick = async() => {
