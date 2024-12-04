@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id    String     @id
+  name  String
+  email String  @unique
+  password String
+  verficationCode String?
+  blogs Blog[]
+}
+
+model Blog {
+  id        String     @id
+  title     String
+  content   String?
+  isFree Boolean @default(true)
+  publishedDate DateTime?
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  String?
+  coverPhoto String?
+}
+
+model Message {
+  id String @id
+  name String
+  email String
+  message String
+}
+
+model Subscriber {
+  id String @id
+  email String @unique
+  emailVerified Boolean @default(false)
+  unSubScribed Boolean @default(false)
+}
