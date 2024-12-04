@@ -1,4 +1,4 @@
-import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
+import { useEditor, EditorContent, BubbleMenu, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
@@ -20,6 +20,7 @@ import { headerLavels, Toolbar } from './Toolbar';
 import { TableBubbleMenu } from './menus/TableBubbleMenu';
 import MediaExtension from './extensions/MediaExtension'
 import ImageExtension from './extensions/ImageExtension'
+import { FontSizeExtension } from './extensions/FontSizeExtension';
 
 // https://random.imagecdn.app/500/150
 // http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
@@ -29,10 +30,12 @@ import ImageExtension from './extensions/ImageExtension'
 
 type EditorProps = {
   content?: string;
-  onBlur?: (content: string) => void;
+  onBlur?: (editor: Editor) => void;
+  immediatelyRender?: boolean,
 }
-export const Editor = ({ content, onBlur }: EditorProps) => {
+const RteEditor = ({ content, onBlur, immediatelyRender=false }: EditorProps) => {
   const editor = useEditor({
+    immediatelyRender,
     extensions: [
       StarterKit.configure({
         heading: {
@@ -70,18 +73,19 @@ export const Editor = ({ content, onBlur }: EditorProps) => {
         nested: true,
       }),
       TextStyle,
-      Color,
+      Color.configure(),
       Highlight.configure({
         multicolor: true,
       }),
+      FontSizeExtension
     ],
     content,
     onBlur: ({ editor }) => {
-      onBlur?.(editor.getHTML());
+      onBlur?.(editor);
     },
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',
+        class: 'prose prose-sm sm:prose lg:prose-lg focus:outline-none',
       },
     },
   });
@@ -92,34 +96,38 @@ export const Editor = ({ content, onBlur }: EditorProps) => {
 
   return (
     <>
-      <Toolbar editor={editor} />
-      <BubbleMenu
-        editor={editor} tippyOptions={{ duration: 100, maxWidth: 400 }}
-        shouldShow={({ editor }) => {
+      <div className=" w-full custom-tiptap">
+        <Toolbar editor={editor} />
+        <BubbleMenu
+          editor={editor} tippyOptions={{ duration: 100, maxWidth: 400 }}
+          shouldShow={({ editor }) => {
 
-          if (editor.isActive('image') || editor.isActive('media')) return false
-          const { from, to } = editor.state.selection;
-          return from !== to; // Show menu only if there is a text selection
+            if (editor.isActive('image') || editor.isActive('media')) return false
+            const { from, to } = editor.state.selection;
+            return from !== to; // Show menu only if there is a text selection
 
-        }}
-      >
-        <div className="bg-white rounded-md shadow-lg border p-2 flex gap-1">
-          <Toolbar editor={editor} variant="bubble" />
-        </div>
-      </BubbleMenu>
+          }}
+        >
+          <div className="bg-white rounded-md shadow-lg border p-2 flex gap-1">
+            <Toolbar editor={editor} variant="bubble" />
+          </div>
+        </BubbleMenu>
 
-      <BubbleMenu
-        editor={editor}
-        tippyOptions={{
-          duration: 100, maxWidth: 400,
-          placement: 'bottom-end'
-        }}
-        shouldShow={({ editor }) => editor.isActive('table')}
-      >
-        <TableBubbleMenu editor={editor} />
-      </BubbleMenu>
+        <BubbleMenu
+          editor={editor}
+          tippyOptions={{
+            duration: 100, maxWidth: 400,
+            placement: 'bottom-end'
+          }}
+          shouldShow={({ editor }) => editor.isActive('table')}
+        >
+          <TableBubbleMenu editor={editor} />
+        </BubbleMenu>
 
-      <EditorContent editor={editor} />
+        <EditorContent editor={editor} />
+      </div>
     </>
   );
 };
+
+export default RteEditor

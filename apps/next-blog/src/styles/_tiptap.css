@@ -5,7 +5,6 @@
     }
   }
   
-
   .ProseMirror {
     min-height: 300px;
     padding: 1rem;
@@ -119,26 +118,13 @@
     color: #6c757d;
   }
   
-  .custom-tiptap{
-
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none; /* Hides the spinner buttons in WebKit browsers */
-        margin: 0;
-    }
-    input[type=number] {
-        -moz-appearance: textfield; /* Hides the spinner buttons in Firefox */
-    }
-
-    input[type="color"] {
+  input[type="color"] {
       -webkit-appearance: none;
       border: none;
   }
-    input[type="color"]::-webkit-color-swatch-wrapper {
-        padding: 0;
-    }
-    input[type="color"]::-webkit-color-swatch {
-        border: none;
-    }
-
+  input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+  }
+  input[type="color"]::-webkit-color-swatch {
+      border: none;
   }

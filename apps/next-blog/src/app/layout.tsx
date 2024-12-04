@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lora } from 'next/font/google'
 import localFont from 'next/font/local'
-import "./globals.css";
+import "./globals.scss";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -42,7 +42,7 @@ export default function RootLayout({
       <body
         className={`relative ${lora.variable} ${geistMono.variable} ${geistSans.className} antialiased`}
       >
-        <div className="flex flex-col items-center bg-stone-50">
+        <div className="w-full flex flex-col items-center bg-stone-50">
           <div className="bg-white max-w-7xl min-h-screen border-x border-solid border-gray-200 py-8 px-20 w-full flex flex-col gap-16 items-center text-slate-700">
             <Navigation/>
             {children}

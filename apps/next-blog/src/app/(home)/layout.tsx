@@ -6,7 +6,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col gap-20">
+    <div className="w-full flex flex-col gap-20">
       <div className="max-w-lg flex flex-col self-center">
         <UserDetails />
       </div>

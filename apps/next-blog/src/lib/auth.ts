@@ -8,7 +8,7 @@ export const SESSION_COOKIE_NAME = 'session';
 export type SessionDetails = { email: string }
 
 const TOKEN_EXPIRATION = '1 hour';
-const COOKIE_EXPIRATION = 30 * (1000); // in ms
+const COOKIE_EXPIRATION = 10 * 60 * (1000); // in ms
 
 export async function encrypt(payload: SessionDetails) {
     return await new SignJWT(payload)

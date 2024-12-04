@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   ref: https://nextjs.org/docs/app/api-reference/next-config-js/serverExternalPackages
   */
   serverExternalPackages: ['bcrypt'],
+  sassOptions: {
+    silenceDeprecations: ['legacy-js-api'],
+  },
 
   images: {
     remotePatterns: [

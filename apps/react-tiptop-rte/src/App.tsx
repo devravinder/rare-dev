@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Editor } from './components/Editor';
+import RteEditor  from './components/RteEditor';
 import Preview from './components/Preview';
 import { Card, CardContent } from './components/Card';
 
@@ -15,7 +15,9 @@ function App() {
         </h1>
         <Card>
           <CardContent>
-            <Editor onBlur={setContent} />
+            <RteEditor onBlur={(editor)=>{
+              setContent(editor.getHTML())
+            }} />
           </CardContent>
         </Card>
 

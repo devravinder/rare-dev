@@ -2,6 +2,7 @@
 import { subScribeAction } from '@/actions'
 import React, { useActionState } from 'react'
 import { MessageTag } from './forms/InputError'
+import Devider from './Devider'
 
 
 export default function Footer() {
@@ -10,6 +11,7 @@ export default function Footer() {
 
   return (
     <div className='flex flex-col gap-20 w-full items-center'>
+      <Devider/>
       <div className="flex flex-col gap-6 items-center text-center max-w-xl">
         <div className="flex flex-col gap-3">
           <div className="text-3xl font-semibold">Follow my journey</div>
@@ -21,7 +23,7 @@ export default function Footer() {
             <button disabled={isPending} className='text-slate-500 px-2 py-2 text-sm disabled:text-gray-400'>{'->'}</button>
           </form>
           <div className="text-xs font-lora text-slate-500 ">By subscribing to our newsletter you accept to receive recurring emails about our product and company</div>
-           <MessageTag {...state}></MessageTag>
+           <MessageTag {...state} space={false}></MessageTag>
         </div>
       </div>
       <div className="text-slate-500 text-sm">
